@@ -1,70 +1,9 @@
-# Getting Started with Create React App
+Este proyecto lo cree a forma de elemento reciclable a futuro, de tal forma que si deseo lo pueda adaptar 
+a cualquier pagina del tipo react js que vaya a hacer en un futuro, nuestro modal contara con las funciones basicas de recibir los elementos a renderizar dentro suyo, hacerce o no visible y hacerce invisible al clicker fuera de ste o sobre un boton "X" en la esquina superior derecha, ademas de claro renderizarce sobre nuestro contenido general de forma semi-transparente sin eliminar este contenido sobre el cual se renderizo.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Para la creacion del modal segui el proceso de crear 2 componentes base:
+El primer Componente de mi modal es una clase que "Portal" creada como un componente de react, esta se va a encargar de buscar un id="modal", creado anteriormente en public/index.html en forma de etiqueta <div id="modal"></div>, esto nos permite renderizar nuestro modal aparte de la etiqueta raiz(root), tal que el renderizado de nuestro ventana modal no se interponga con el renderizado base de nuestra pagina creando un renderizado paralelo al nuestro. En resumen, el componente "Portal" se encarga de crear una etiqueta generica que se renderizara fuera de nuestro arbol de renderizado general para la pagina, para esto el componente administra esa etiqueta generica cargando y eliminando contenido que nosotros le entregemos como parametros en forma de props.
+El segundo elemento de nuestro modal es llamado "Modal", este se encarga de cargar el frontend base del modal, tal que el tomara todo el contenido que agregemos dentro de su etiqueta en forma de children y lo enviara a el componente "portal" para renderizarlo fuera de la raiz de ejecucion de la pagina principal. Ademas de recibir los etiquetas generadas dentro de el nuestro componente "Modal" recibira por medio de props una variable booleana que indicara si debe o no renderizar el contenido nuestro "portal" y un metodo toggle desde la ejecucion de nuestra pagina para que nuestro Modal envie cambios de visibilidad a la aplicacion, dotando la capasidad de que nuestro modal envie una señal de validacion a la pagina que hara visible o no-visible nuestro modal, por lo cual se creara un canal de comunicacion hijo-padre para nuestro modal.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Finalmente queda resaltar pequeños datos del proyecto como que cree un componente de prueba /componentes/ExampleModalContent.js para probar la versatilidad del codigo, y en caso de querer recrear mi codigo se debe copiar la carpeta componentes con la clase modal y portal, y dentro de public/index.html agregar justo debajo de la etiqueta <div id="root"> </div> una etiqueta <div id="modal"></div> para poder renderizar el modal aparte de la raiz(root) de ejecucion.
+Y si leiste hasta aca cualquier feedback es bienvenido.
